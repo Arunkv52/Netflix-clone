@@ -7,12 +7,12 @@ import Movies from "./Pages/Movies";
 import MyList from "./Pages/MyList";
 import RecentlyAdded from "./Pages/RecentlyAdded";
 import TvShows from "./Pages/TvShows";
+import Player from "./components/Player";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
@@ -20,6 +20,9 @@ const App = () => {
           <Route path="/mylist" element={<MyList />} />
           <Route path="/recently" element={<RecentlyAdded />} />
           <Route path="/tvshows" element={<TvShows />} />
+          <Route path="/player" element={<Player/>} />
+          <Route path="/player/:id" element={<Player />} />
+
         </Routes>
       </BrowserRouter>
     </>

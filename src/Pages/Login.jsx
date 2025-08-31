@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import LoginBg from "../assets/login-bg.jpg";
 import Logo from "../assets/Logo.png";
+import Footer from "../components/Footer";
 
 const Login = () => {
   // Read more and less
@@ -13,10 +14,10 @@ const Login = () => {
     <>
       <div
         className="login-page w-full h-dvh"
-        style={{ background: `url(${LoginBg})` }}
+        style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${LoginBg})` }}
       >
-        <div className="logo py-5 md:px-10 px-5">
-          <img src={Logo} alt="" className="w-[100px]" />
+        <div className="logo py-5 md:px-40 px-5">
+          <img src={Logo} alt="" className="w-[150px]" />
         </div>
         {/* Form start */}
         <form className="md:w-1/3 w-full relative md:top-0 top-10 md:left-1/3 md:px-0 px-5">
@@ -120,6 +121,7 @@ const Login = () => {
           </div>
         </form>
       </div>
+      <Footer/>
     </>
   );
 };
