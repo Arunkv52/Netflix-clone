@@ -5,6 +5,7 @@ import { Bell } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import User from "../assets/user-icon.jpg";
 import { Link } from "react-router";
+import { logout } from "../firebase";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -63,8 +64,8 @@ const Navbar = () => {
               {open && (
                 <div className="absolute right-0 mt-2 w-30 bg-white shadow-lg rounded-lg overflow-hidden">
                   <button
-                    onClick={() => alert("Signed out!")}
-                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={logout}
+                    className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
                   >
                     Sign out
                   </button>

@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { FaPlay } from "react-icons/fa";
 import TitleCards from "../components/TitleCards";
 
+
 const Home = () => {
 
 

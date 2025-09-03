@@ -2,19 +2,37 @@ import React, { useState } from "react";
 import LoginBg from "../assets/login-bg.jpg";
 import Logo from "../assets/Logo.png";
 import Footer from "../components/Footer";
+import { login, signup } from "../firebase";
 
 const Login = () => {
   // Read more and less
   const [read, setRead] = useState(false); //read is a false & setRead is a true
 
   // sign and signup
-  const [signin, setSignin] = useState(true); //sign is a true and siginup is a false
+  const [signin, setSignin] = useState(true); // true = Sign In, false = Sign Up
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const user_auth = async (event) => {
+    event.preventDefault();
+    if (signin) {
+      await login(email, password);
+    } else {
+      await signup(name, email, password);
+    }
+  };
+
+  
 
   return (
     <>
       <div
         className="login-page w-full h-dvh"
-        style={{ backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${LoginBg})` }}
+        style={{
+          backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${LoginBg})`,
+        }}
       >
         <div className="logo py-5 md:px-40 px-5">
           <img src={Logo} alt="" className="w-[150px]" />
@@ -35,6 +53,10 @@ const Login = () => {
                   id=""
                   placeholder="Enter User Name"
                   className="bg-[#151311] text-white py-3 px-5 w-full my-3 rounded-[5px]"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
                 />
               </div>
             )}
@@ -48,6 +70,10 @@ const Login = () => {
                 id=""
                 placeholder="Enter Email Address"
                 className="bg-[#151311] text-white py-3 px-5 w-full my-3 rounded-[5px]"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
               />
             </div>
             {/* password details */}
@@ -59,6 +85,10 @@ const Login = () => {
                 id=""
                 placeholder="Enter Password"
                 className="bg-[#151311] text-white py-3 px-5 w-full my-3 rounded-[5px]"
+                value={password}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                }}
               />
             </div>
             {/* button start */}
@@ -66,6 +96,7 @@ const Login = () => {
               <button
                 type="submit"
                 className="bg-red-700 w-full py-2 text-white font-semibold mt-3 cursor-pointer"
+                onClick={user_auth}
               >
                 {signin ? "Sign in" : "Sign up"}
               </button>
@@ -121,7 +152,7 @@ const Login = () => {
           </div>
         </form>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };
